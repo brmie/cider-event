@@ -323,7 +323,7 @@ var bangOnThePianoKey = function(e){
 	
 	// - - - - - 건반 클릭 효과 - - - - - //
 	
-	var k; // 옥타브 라0부터 시작 도는 1 부터라서
+	var k; // 옥타브 라0 부터 시작 도는 1 부터라서
 	
 	if(n<3){
 		k=1;
