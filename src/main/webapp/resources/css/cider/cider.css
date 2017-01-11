@@ -1,0 +1,365 @@
+@CHARSET "UTF-8";
+
+/******** 배경 이미지 ********/
+article {
+	background:
+		url('/resources/img/back/musicLine.png') center 470px no-repeat,
+		url('/resources/img/back/starPattern.png') center 1860px / 250px repeat-x,
+		url('/resources/img/back/grayLine.png') center 1390px no-repeat;
+	padding:100px 0 0;
+}
+
+
+/******** 이벤트 제목 꾸미기 ********/
+
+#ciderLogo {
+	width:220px;
+}
+
+#starIcon {
+	margin:40px 0 32px;
+}
+
+
+/******** 탄산톡톡 ********/
+
+.toctoc {
+    width: 80px;
+    height: 80px;
+	background-size:100% !important;
+	position: absolute;
+}
+
+.tocsmall {
+	width:50px; height:50px;
+}
+
+.toctoc1{background:url('/resources/img/back/toctoc001.gif') 0 0 no-repeat;}
+.toctoc2{background:url('/resources/img/back/toctoc002.gif') 0 0 no-repeat;}
+.toctoc3{background:url('/resources/img/back/toctoc003.gif') 0 0 no-repeat;}
+.toctoc4{background:url('/resources/img/back/toctoc004.gif') 0 0 no-repeat;}
+
+#toctoc1{left:25%; top:100px;}
+#toctoc2{right:20%; top:180px;}
+#toctoc3{left:32%; top:220px;}
+#toctoc4{right:33%; top:280px;}
+#toctoc5{left:15%; top:280px;}
+#toctoc6{right:30%; top:90px;}
+#toctoc7{left:8%; top:400px;}
+#toctoc8{right:10%; top:380px;}
+#toctoc9{left:5%; top:200px;}
+#toctoc10{right:5%; top:220px;}
+
+
+/******** 악보와 음표 ********/
+
+#noteBox {
+	height:270px;
+	z-index:11;
+}
+
+#notes {
+	width:675px;
+	height:100%;
+	margin:0 auto;
+}
+
+.note {
+	width:45px;
+	height:35px;
+	display: inline-block;
+	margin:0 45px;
+	position: relative;
+	text-align:center;
+	color:#fff;
+}
+
+.note:BEFORE, .note:AFTER{
+	background:#111;
+	position: absolute;
+	left:0;
+}
+
+.note:BEFORE {
+	content:attr(data-content);
+	line-height:33px;
+	width:43px;
+	height:35px;
+	border: 1px solid #111;
+	border-radius:65% 45% 65% 45%; 
+	position: absolute;
+	top:0;
+}
+
+.note:AFTER {
+	content:'';
+	width:4px;
+	height:90px;
+	top:-75px;
+	left:41px; 
+}
+
+.down:AFTER { top:20px; left:0; }
+
+.cil {top:0;}
+.sung {top:17px;}
+.sa {top:44px;}
+.ee {top:67px;}
+.da {top:72px;}
+
+.sharp {
+	color: #111;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 55px;
+    top: -13px;
+}
+
+.line {
+	background: #111;
+    width: 20px;
+    height: 4px;
+    border-radius:2px;
+    position: absolute;
+    top: 16px;
+    left:-8px;
+}
+
+.line:AFTER {
+	content:'';
+	background: #111;
+    width: 20px;
+    height:4px;
+    border-radius:2px;
+    position: absolute;
+    top: 0;
+    left:40px;
+}
+
+.under {
+   	width: 55px;
+	top: 33px;
+}
+
+.upper {
+	width: 55px;
+	top: 0px;
+}
+
+/******** 피아노 ********/
+
+#pianoContent {
+	z-index:10;
+}
+
+#keyboardBig {
+	width:100%;
+	height:230px;
+	overflow:hidden;
+	margin:0 0 45px 0;
+	position:relative;
+}
+
+#keyboardBigImg {
+	background: url('/resources/img/keyboardBig.png') 0 0 no-repeat;
+	width:2965px;
+	height:230px;
+	position:relative;
+	left:0;
+}
+
+/* 건반 눌린 효과 */
+
+#shape {
+	position: absolute;
+	background:rgba(78,225,124,0.8);
+	top:0;
+}
+
+#shape:BEFORE, #shape:AFTER {
+	content:'';
+	position: absolute;
+	background:rgba(78,225,124,0.8);
+}
+
+.white:BEFORE {width:57px; height:96px; top: 134px; left: 0; }
+.white:AFTER {height:134px; top: 0;}
+
+.a:AFTER { width:30px; left: 17px; }
+.b:AFTER { width:34px; left: 23px; }
+.c:AFTER { width:34px; left: 0; }
+.d:AFTER { width:34px; left: 12px; }
+.e:AFTER { width:34px; left: 23px; }
+.f:AFTER { width:35px; left: 0; }
+.g:AFTER { width:30px; left: 11px; }
+
+.black { width:34px; height:134px; }
+
+#keyboardNav {
+	background: url('/resources/img/keyboardSmall.png') center center no-repeat;
+	height:130px;
+	position:relative;
+}
+
+#pointer {
+	width:330px;
+	height:130px;
+	border:9px solid #4ee17c;
+	position: absolute;
+	top:0;
+	left:300px;
+}
+
+#pointerInfo{
+	background: url('/resources/img/arrow.png') center center no-repeat;
+	width:inherit;
+	text-align:center;
+	color:#4ee17c;
+	font-size: 17px;
+	font-weight: 300;
+	position: absolute;
+	bottom:-40px;
+	left:-9px;
+}
+
+
+
+
+/******** 응모하기 폼 ********/
+
+#entryForm {
+	margin:85px 0 0;
+	position: relative;
+}
+
+.inputGroup {
+	width:600px;
+	height:50px;
+	display: inline-block;
+	position: relative;
+}
+
+.inputGroup label {
+	width:92px;
+	height:inherit;
+	color:#999;
+	font-size:34px;
+	font-weight:300;
+	line-height: 46px;
+    vertical-align: middle;
+	display: inline-block;
+	margin: -9px 20px 0 0;
+}
+
+.inputGroup label span {
+	width:100%;
+	height:inherit;
+	letter-spacing: -1px;
+	text-align: justify;
+	text-align-last: justify;
+	display: inline-block;
+}
+
+.inputGroup:FIRST-CHILD{
+	margin:0 0 25px 0;
+}
+
+#entryForm input[type='text'], #entryForm input[type='email']{
+	width:482px;
+	height:inherit;
+	top:-10px;
+	background:#fff;
+	border:1px solid #999;
+	font-size: 25px;
+	font-weight:400;
+	padding:0 15px;
+}
+
+#entryForm input[type='text']:FOCUS, #entryForm input[type='email']:FOCUS {
+	outline:4px solid #4ee17c;
+	border:none;
+}
+
+#entryForm form input.ng-invalid.ng-touched {
+    outline:2px solid #FA787E;
+    border:2px solid #FA787E;
+}
+
+#entryForm form input.ng-valid.ng-touched {
+    outline:2px solid #4ee17c;
+    border:2px solid #4ee17c;
+}
+
+.inputInfo {
+	position: absolute;
+    top: 12px;
+    right: 20px;
+    font-size: 16px;
+    color: #ccc;
+    display: inline-block;
+}
+
+#entryForm input[name='entry_melody'] {
+	
+}
+
+#entryForm input[type='submit'] {
+	background: url('/resources/img/entryok.jpg') center center no-repeat;
+	width:314px;
+	height:125px;
+	border:none;
+	display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+
+#entryMethod {
+	padding:150px 0 0;
+}
+
+#entryMethodContent {
+	background: url('/resources/img/entrymethod.png') center center no-repeat;
+	width:100%;
+	height:228px;
+	
+}
+
+/******** content2 ********/
+
+#content2 .point {
+	margin-right: 0;
+}
+
+
+/******** 경품 ********/
+#giveaway {
+	background: url('/resources/img/giveaway.png') center center / 90% no-repeat;
+	width:100%;
+	height:700px;
+	margin:50px 0 80px;
+}
+
+/******** 유의사항 ********/
+
+#noticeContent {
+	width:inherit;
+	background:rgba(150,150,150,0.1);
+	border-radius:15px;
+	padding:30px 40px;
+}
+
+#noticeContent li {
+	list-style: none;
+	color:#999;
+	font-size:20px;
+	font-weight:300; 
+	padding: 0 0 0 4px;
+	margin:5px 0;
+}
+
+#noticeContent li:BEFORE {
+	content: "- ";
+}
