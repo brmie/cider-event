@@ -31,7 +31,7 @@ public class CiderController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String cider(Model model) throws Exception {
-		logger.info("사이다 이벤트입니당");
+//		logger.info("사이다 이벤트입니당");
 		return "cider";
 	}
 	
@@ -58,11 +58,10 @@ public class CiderController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/email/{entry_email}", method = RequestMethod.GET)
-	public String email(@PathVariable String entry_email) throws Exception {
-		System.out.println("uniqueEmail" + service.uniqueEmail(entry_email));
-		String num = service.uniqueEmail(entry_email) + "";
-		return num;
+	@RequestMapping(value="/email", method = RequestMethod.POST)
+	public String email(HttpServletRequest request) throws Exception {
+		String entry_email = request.getParameter("entry_email");
+		return service.uniqueEmail(entry_email);
 	}
 	
 	@ResponseBody

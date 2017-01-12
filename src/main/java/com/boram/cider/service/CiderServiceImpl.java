@@ -33,8 +33,8 @@ public class CiderServiceImpl implements CiderService {
 	}
 
 	@Override
-	public int uniqueEmail(String entry_email) throws Exception {		
-		return dao.uniqueEmail(entry_email);
+	public String uniqueEmail(String entry_email) throws Exception {		
+		return dao.uniqueEmail(entry_email) + "";
 	}
 
 }

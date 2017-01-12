@@ -8,5 +8,5 @@ public interface CiderService {
 	public List<EntryVO> listEntry() throws Exception;
 	public void insertEntry(EntryVO entry) throws Exception;
 	public String selectMelody(int entry_no) throws Exception;
-	public int uniqueEmail(String entry_email) throws Exception;
+	public String uniqueEmail(String entry_email) throws Exception;
 }

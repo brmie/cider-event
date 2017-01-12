@@ -31,22 +31,21 @@ angular.module('ciderApp', [])
     			
     			
     			$.ajax({
-					method : 'get',
-					url : '/cider/email/' + entry.entry_email,
+					method : 'post',
+					url : '/cider/email',
 					dataType : 'json',
+					data:entryData,
 					success : function(data){
 						var emailValidation = data; // 이메일 존재유무, 0 은 없음 1은 존재
-						if ( emailValidation == 0 ){
+						
+						if ( emailValidation == '0' ){
 							$.ajax({
 								method : 'post',
 								url : '/cider/entry',
 								dataType : 'json',
 								data : entryData,
-								success : function(data){
-									alert(data.entry_name + '님 응모되었습니당>_<');
-								},
 								complete : function(){
-									alert('hoho.');
+									errorMassage(entryData["entry_name"] + '님 응모되었습니당 >_<');
 								}
 							});
 						} else {
