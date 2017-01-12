@@ -36,7 +36,7 @@ angular.module('ciderApp', [])
 					dataType : 'json',
 					success : function(data){
 						var emailValidation = data; // 이메일 존재유무, 0 은 없음 1은 존재
-						if ( emailValidation >0 ){
+						if ( emailValidation == 0 ){
 							$.ajax({
 								method : 'post',
 								url : '/cider/entry',
@@ -45,8 +45,8 @@ angular.module('ciderApp', [])
 								success : function(data){
 									alert(data.entry_name + '님 응모되었습니당>_<');
 								},
-								error : function(){
-									alert('에러맨...');
+								complete : function(){
+									alert('hoho.');
 								}
 							});
 						} else {
