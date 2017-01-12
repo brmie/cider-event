@@ -3,6 +3,7 @@ package com.boram.cider.service;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,11 @@ public class CiderServiceImpl implements CiderService {
 	public String selectMelody(int entry_no) throws Exception {
 		EntryVO entry = dao.selectEntry(entry_no);
 		return entry.getEntry_melody();
+	}
+
+	@Override
+	public int uniqueEmail(String entry_email) throws Exception {		
+		return dao.uniqueEmail(entry_email);
 	}
 
 }

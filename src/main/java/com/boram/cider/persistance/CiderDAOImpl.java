@@ -34,14 +34,9 @@ public class CiderDAOImpl implements CiderDAO {
 
 	@Override
 	public int uniqueEmail(String entry_email) throws Exception {
-		// 방금 입력한 이메일이 들어갈 수 있으면 1, 아니면 -1을 리턴
-		int num = 1;
-		try {
-			session.selectOne(namespace + ".uniqueEmail", entry_email);
-		} catch (Exception e) {
-			e.printStackTrace();
-			num = -1;
-		}
+		// 방금 입력한 이메일이 들어갈수 있으면 0 
+		int num = session.selectOne(namespace + ".uniqueEmail", entry_email);
+		System.out.println(num);
 		return num;
 	}
 

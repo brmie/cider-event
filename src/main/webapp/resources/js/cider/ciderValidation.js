@@ -28,25 +28,36 @@ angular.module('ciderApp', [])
     					"entry_email" : entry.entry_email,
     					"entry_melody" : entry.entry_melody
     			};
-    				
-				$.ajax({
-					method : 'post',
-					url : '/cider/entry',
+    			
+    			
+    			$.ajax({
+					method : 'get',
+					url : '/cider/email/' + entry.entry_email,
 					dataType : 'json',
-					data : entryData,
 					success : function(data){
-						alert(data.entry_name + '님 응모되었습니당>_<');
-					},
-					error : function(){
-						alert('에러맨...');
+						var emailValidation = data; // 이메일 존재유무, 0 은 없음 1은 존재
+						if ( emailValidation >0 ){
+							$.ajax({
+								method : 'post',
+								url : '/cider/entry',
+								dataType : 'json',
+								data : entryData,
+								success : function(data){
+									alert(data.entry_name + '님 응모되었습니당>_<');
+								},
+								error : function(){
+									alert('에러맨...');
+								}
+							});
+						} else {
+							errorMassage( entry.entry_email + ' 은 \n 이미 응모한 메일입니다');
+						}
 					}
 				});
     			
-//    			$('#entryForm').find('form')[0].submit();
 			} else {
 				
-				var errorText = '';
-				var addBox = '<div><p>';
+				var errorText = ''; // 에러문
 				
 				if ( !$scope.entryForm.entry_name.$valid ) {
 					errorText += '이름';
@@ -66,17 +77,7 @@ angular.module('ciderApp', [])
 					errorText += '멜로디';
 				}
 				
-				addBox += errorText + '를 확인해주세요!!' + '</p></div>';
-				
-				$('#content').after(addBox);
-				$('#content + div').addClass('errorBox');
-				
-				$('.errorBox').css('top', $(window).scrollTop() - ($('.errorBox').outerHeight() - $(window).height())/2 - 100);
-				$('.errorBox').css('left', $(window).width()/2 - $('.errorBox').outerWidth()/2);
-				
-				$('.errorBox').delay(1000).fadeOut('slow', function(){
-					$(this).remove();
-				});
+				errorMassage(errorText + '를 확인해주세요!!');
 			}
     	}
 }]);
@@ -91,3 +92,21 @@ $(function() {
 	});
 	
 });
+
+
+// 알림창
+var errorMassage = function(errorText){
+
+	var addBox = '<div><p>'; // 에러 찍힐 박스
+	addBox += errorText + '</p></div>';
+	
+	$('#content').after(addBox);
+	$('#content + div').addClass('errorBox');
+	
+	$('.errorBox').css('top', $(window).scrollTop() - ($('.errorBox').outerHeight() - $(window).height())/2 - 100);
+	$('.errorBox').css('left', $(window).width()/2 - $('.errorBox').outerWidth()/2);
+	
+	$('.errorBox').delay(3000).fadeOut('slow', function(){
+		$(this).remove();
+	});
+}

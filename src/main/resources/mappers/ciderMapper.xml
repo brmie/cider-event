@@ -19,6 +19,11 @@
 		SELECT entry_melody FROM entry
 			WHERE entry_no = #{entry_no }
 	</select>
+	
+	<select id="uniqueEmail" resultType="Integer">
+		SELECT count(*) FROM entry
+			WHERE entry_email = #{entry_email }
+	</select>
 </mapper>
 
 

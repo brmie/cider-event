@@ -47,10 +47,6 @@ public class CiderController {
 	@RequestMapping(value = "/entry", method = RequestMethod.POST)
 	public String entry(Model model, HttpServletRequest request) throws Exception {
 		
-		System.out.println(request.getParameter("entry_name"));
-		System.out.println(request.getParameter("entry_email"));
-		System.out.println(request.getParameter("entry_melody"));
-		
 		EntryVO entry = new EntryVO();
 		
 		entry.setEntry_name(request.getParameter("entry_name"));
@@ -59,6 +55,14 @@ public class CiderController {
 		
 		service.insertEntry(entry);
 		return "redirect:/cider";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/email/{entry_email}", method = RequestMethod.GET)
+	public String email(@PathVariable String entry_email) throws Exception {
+		System.out.println("uniqueEmail" + service.uniqueEmail(entry_email));
+		String num = service.uniqueEmail(entry_email) + "";
+		return num;
 	}
 	
 	@ResponseBody
