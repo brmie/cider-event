@@ -35,11 +35,15 @@ $(function() {
 						$('#allSound')[0].play();
 					} else if ( i == 5 ){
 						// 소리 재생 끝나면 색 원상복귀
-						$thisItem.css('backgroundColor', '#fff');
+						$thisItem.css('background', '');
 						$thisItem.children('div.playing').remove();
 					}
 				});
 			} // end success
 		}) // end ajax
 	});
+	
+
+	
+	
 });
