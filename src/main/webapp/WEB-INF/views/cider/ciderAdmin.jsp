@@ -15,12 +15,13 @@
 		<div class="clear"></div>
 		
 		<div id="entryList">
-			
+		
 			<audio id="allSound" src=""></audio>
 			
 			<c:if test="${entries.size() == 0 }">
 				<span class="emptyTitle">아직 아무도 응모하지 않았어요 ㅠoㅠ</span>
 			</c:if>
+			
 			<c:forEach var="entry" items="${entries }">
 				<div class="entryItem">
 					<p class="entry-no">${entry.entry_no }</p>

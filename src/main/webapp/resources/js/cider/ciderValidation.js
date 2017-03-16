@@ -5,6 +5,12 @@
 angular.module('ciderApp', [])
 	.controller('EntryController', ['$scope', '$http', function($scope, $http) {
 		
+//		$scope.master = {entry_name:"", entry_eamil:"", entry_melody:""};
+//		
+//		$scope.reset = function() {
+//	        $scope.entry = angular.copy($scope.master);
+//	    };
+		
 		$scope.update = function(entry) {
 			
 			$scope.entryForm.entry_melody.$valid = false;
@@ -18,6 +24,46 @@ angular.module('ciderApp', [])
 			}
     	};
     	
+    	$scope.entryAjax = function(entryData, entryForm){
+    		// entry ajax
+			console.log(
+					'in entryAjax ' + entryData['entry_name'] + 
+					' / in entryAjax ' + entryData['entry_email'] + 
+					' / in entryAjax ' + entryData['entry_melody']
+			);
+			/* 성공적으로 결과 데이터가 넘어 왔을 때 처리 */
+			$http({
+				method: 'POST', //방식
+				url: '/cider/entry', /* 통신할 URL */
+				data: $.param(entryData), /* 파라메터로 보낼 데이터 */
+				headers: {
+			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+			    } //헤더
+			})
+			.success(function(data, status, headers, config) {
+				popMessage(entryData["entry_name"] + '님 응모되었습니당 >_<');
+				location.reload();
+				
+//				$scope.reset(entryForm);
+				
+				// 리다이렉트 할 방법을 찾아오시오. 너의 미쑌
+				
+//				$http({
+//    			    method: 'get' ,
+//    			    url: '/cider/entry',
+//    			    headers: {
+//    			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+//    			    }
+//    			})
+				
+				
+			})
+			.error(function(data, status, headers, config) {
+				/* 서버와의 연결이 정상적이지 않을 때 처리 */
+				console.log('status : ' + status);
+			});
+    	}
+    	
     	
     	$scope.submitForm = function(entry, entryForm){
     		
@@ -30,30 +76,27 @@ angular.module('ciderApp', [])
     			};
     			
     			
-    			$.ajax({
-					method : 'post',
-					url : '/cider/email',
-					dataType : 'json',
-					data:entryData,
-					success : function(data){
-						var emailValidation = data; // 이메일 존재유무, 0 은 없음 1은 존재
-						
-						if ( emailValidation == '0' ){
-							$.ajax({
-								method : 'post',
-								url : '/cider/entry',
-								dataType : 'json',
-								data : entryData,
-								complete : function(){
-									errorMassage(entryData["entry_name"] + '님 응모되었습니당 >_<');
-								}
-							});
-						} else {
-							errorMassage( entry.entry_email + ' 은 \n 이미 응모한 메일입니다');
-						}
-					}
-				});
-    			
+    			$http({
+    			    method: 'POST' ,
+    			    url: '/cider/email',
+    			    data: $.param(entryData), // angular 에서 데이터 전송시 $.param을 통해 직렬화를 해주어야한다
+    			    headers: {
+    			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    			    }
+    			}).success(function(data) {
+    				var email_check = data.email_check; // 이메일 존재유무, 0 은 없음 1은 존재
+    			    console.log('data : ' + email_check);
+    			    if(email_check == '0' ) {
+    			    	$scope.entryAjax(entryData, entryForm);
+    			    } else {
+    					popMessage( entry.entry_email + ' 은 \n 이미 응모한 메일입니다');
+        			}
+    			}).error(function(data, status, headers, config) {
+    				console.log(data);
+    				console.log(status);
+    				console.log(headers);
+    			});
+
 			} else {
 				
 				var errorText = ''; // 에러문
@@ -76,7 +119,7 @@ angular.module('ciderApp', [])
 					errorText += '멜로디';
 				}
 				
-				errorMassage(errorText + '를 확인해주세요!!');
+				popMessage(errorText + '를 확인해주세요!!');
 			}
     	}
 }]);
@@ -94,7 +137,7 @@ $(function() {
 
 
 // 알림창
-var errorMassage = function(errorText){
+var popMessage = function(errorText){
 
 	var addBox = '<div><p>'; // 에러 찍힐 박스
 	addBox += errorText + '</p></div>';
@@ -109,3 +152,4 @@ var errorMassage = function(errorText){
 		$(this).remove();
 	});
 }
+

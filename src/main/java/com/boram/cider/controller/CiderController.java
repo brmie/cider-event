@@ -44,8 +44,9 @@ public class CiderController {
 	}
 	
 	// 응모하기 버튼 클릭 시
+	@ResponseBody
 	@RequestMapping(value = "/entry", method = RequestMethod.POST)
-	public String entry(Model model, HttpServletRequest request) throws Exception {
+	public void entry(HttpServletRequest request) throws Exception {
 		
 		EntryVO entry = new EntryVO();
 		
@@ -54,14 +55,14 @@ public class CiderController {
 		entry.setEntry_melody(request.getParameter("entry_melody"));
 		
 		service.insertEntry(entry);
-		return "redirect:/cider";
 	}
 	
 	@ResponseBody
 	@RequestMapping(value="/email", method = RequestMethod.POST)
 	public String email(HttpServletRequest request) throws Exception {
 		String entry_email = request.getParameter("entry_email");
-		return service.uniqueEmail(entry_email);
+		System.out.println("entry_email => " + entry_email);
+		return "{\"email_check\":\""+service.uniqueEmail(entry_email)+"\"}";
 	}
 	
 	@ResponseBody

@@ -17,6 +17,10 @@
 		<put-attribute name="content" value="/WEB-INF/views/cider/cider.jsp"/>
 	</definition>
 	
+	<definition name="winner" extends="baseLayout">
+		<put-attribute name="content" value="/WEB-INF/views/cider/winner.jsp"/>
+	</definition>
+	
 	<definition name="ciderAdmin" extends="baseLayout">
 		<put-attribute name="content" value="/WEB-INF/views/cider/ciderAdmin.jsp"/>
 	</definition>

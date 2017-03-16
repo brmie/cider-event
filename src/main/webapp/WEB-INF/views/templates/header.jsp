@@ -6,10 +6,8 @@
 	</h1>
 	<nav id="menu">
 		<ul>
-			<li><a href="#1">유럽원정대</a></li>
 			<li><a href="/cider">멜로디메이킹</a></li>
-			<li><a href="#3">행운의 숫자를 잡아라</a></li>
-			<li><a href="#4">이벤트 발표</a></li>
+			<li><a href="/winner">당첨자 발표</a></li>
 		</ul>
 	</nav>
 </div>

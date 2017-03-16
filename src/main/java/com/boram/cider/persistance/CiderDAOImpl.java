@@ -15,7 +15,7 @@ public class CiderDAOImpl implements CiderDAO {
 	
 	@Inject
 	private SqlSession session;
-	public static String namespace = "com.boram.cider.mapper.pianoMapper";
+	public static String namespace = "com.boram.cider.mapper.entryMapper";
 	
 	@Override
 	public List<EntryVO> listEntry() throws Exception {

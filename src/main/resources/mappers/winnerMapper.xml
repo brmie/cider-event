@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.boram.cider.mapper.winnerMapper">
+
+	<select id="listWinner" resultType="EntryVO">
+		<![CDATA[
+			SELECT * FROM entry 
+				WHERE entry_winner > 0
+				ORDER BY entry_no DESC
+		]]>
+	</select>
+	
+	<update id="updateWinner" parameterType="EntryVO">
+		UPDATE entry SET entry_winner = #{entry_winner }
+			WHERE entry_no = #{entry_no }
+	</update>
+	
+</mapper>
