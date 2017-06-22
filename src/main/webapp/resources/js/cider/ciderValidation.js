@@ -34,7 +34,7 @@ angular.module('ciderApp', [])
 			/* 성공적으로 결과 데이터가 넘어 왔을 때 처리 */
 			$http({
 				method: 'POST', //방식
-				url: '/cider/entry', /* 통신할 URL */
+				url: '/entry', /* 통신할 URL */
 				data: $.param(entryData), /* 파라메터로 보낼 데이터 */
 				headers: {
 			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -50,7 +50,7 @@ angular.module('ciderApp', [])
 				
 //				$http({
 //    			    method: 'get' ,
-//    			    url: '/cider/entry',
+//    			    url: '/entry',
 //    			    headers: {
 //    			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 //    			    }
@@ -78,7 +78,7 @@ angular.module('ciderApp', [])
     			
     			$http({
     			    method: 'POST' ,
-    			    url: '/cider/email',
+    			    url: '/email',
     			    data: $.param(entryData), // angular 에서 데이터 전송시 $.param을 통해 직렬화를 해주어야한다
     			    headers: {
     			        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

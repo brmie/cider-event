@@ -22,14 +22,14 @@ import com.boram.cider.service.CiderService;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/cider")
+//@RequestMapping("/cider")
 public class CiderController {
 	
 	@Inject
 	private CiderService service;
 	private static final Logger logger = LoggerFactory.getLogger(CiderController.class);
 	
-	@RequestMapping(value = "", method = RequestMethod.GET)
+	@RequestMapping(value = "/cider", method = RequestMethod.GET)
 	public String cider(Model model) throws Exception {
 //		logger.info("사이다 이벤트입니당");
 		return "cider";

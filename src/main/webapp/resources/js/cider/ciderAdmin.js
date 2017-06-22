@@ -16,7 +16,7 @@ $(function() {
 		
 		$.ajax({
 			type:"GET",
-			url:"/cider/play/" + entry_no,
+			url:"/play/" + entry_no,
 			success: function(data){
 				
 				// 뱓아온 멜로디를 배열에 담는다

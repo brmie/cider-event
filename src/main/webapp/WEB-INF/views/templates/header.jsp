@@ -7,7 +7,7 @@
 	<nav id="menu">
 		<ul>
 			<li><a href="/cider">멜로디메이킹</a></li>
-			<li><a href="/cider/entry">관리자페이지</a></li>
+			<li><a href="/entry">관리자페이지</a></li>
 		</ul>
 	</nav>
 </div>
