@@ -32,6 +32,7 @@
 		<div id="infoBox"></div>
 		
 		<div class="clear"></div>
+		
 		<div id="noteBox">
 			<div id="notes"></div>
 			<audio id="nowClickSound" src=""></audio>
