@@ -179,7 +179,7 @@
           <groupId>org.postgresql</groupId>
           <artifactId>postgresql</artifactId>
           <version>9.4-1204-jdbc41</version>
-      </dependency>>
+      </dependency>
       <dependency>
           <groupId>commons-dbcp</groupId>
           <artifactId>commons-dbcp</artifactId>
