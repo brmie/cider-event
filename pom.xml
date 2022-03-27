@@ -179,8 +179,7 @@
           <groupId>org.postgresql</groupId>
           <artifactId>postgresql</artifactId>
           <version>9.4-1204-jdbc41</version>
-          <destFileName>postgres.jar</destFileName>
-      </dependency>
+      </dependency>>
       <dependency>
           <groupId>commons-dbcp</groupId>
           <artifactId>commons-dbcp</artifactId>
@@ -198,7 +197,7 @@
           <scope>provided</scope>
       </dependency>
 	</dependencies>
-
+  
     <build>
         <plugins>
             <plugin>
